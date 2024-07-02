@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, UntypedFormArray, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CursosService } from '../services/cursos.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Location, NgIf, NgFor } from '@angular/common';
+import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Curso } from '../model/curso';
 import { Aula } from '../model/aula';
@@ -22,27 +22,25 @@ import { MatCard, MatCardHeader, MatCardTitle, MatCardContent, MatCardActions } 
     styleUrls: ['./curso-form.component.scss'],
     standalone: true,
     imports: [
-        MatCard,
-        MatCardHeader,
-        MatCardTitle,
-        MatCardContent,
-        ReactiveFormsModule,
-        MatFormField,
-        MatInput,
-        MatHint,
-        NgIf,
-        MatError,
-        MatLabel,
-        MatSelect,
-        MatOption,
-        MatToolbar,
-        MatIconButton,
-        MatIcon,
-        NgFor,
-        MatPrefix,
-        MatCardActions,
-        MatButton,
-    ],
+    MatCard,
+    MatCardHeader,
+    MatCardTitle,
+    MatCardContent,
+    ReactiveFormsModule,
+    MatFormField,
+    MatInput,
+    MatHint,
+    MatError,
+    MatLabel,
+    MatSelect,
+    MatOption,
+    MatToolbar,
+    MatIconButton,
+    MatIcon,
+    MatPrefix,
+    MatCardActions,
+    MatButton
+],
 })
 export class CursoFormComponent implements OnInit {
   form!: FormGroup;
@@ -132,7 +130,7 @@ export class CursoFormComponent implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       this.service.salvar(this.form.value).subscribe({
-        next: (data) => this.onSucess(),
+        next: () => this.onSucess(),
         error: () => {
           this.onError();
         },
